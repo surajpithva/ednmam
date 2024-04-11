@@ -1,25 +1,44 @@
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import { Header } from "./components/header/header";
+import "bootstrap/dist/css/bootstrap.min.css";
+import "bootstrap/dist/js/bootstrap.bundle";
+import { Footer } from "./components/footer/footer";
+import { createBrowserRouter, Outlet } from "react-router-dom";
+// import Error from "./pages/Error";
+import About from "./pages/About";
+import Contact from "./pages/Contact";
+import Cards from "./components/Cards/Cards";
 
-function App() {
+const AppLayout = () => {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <Header />
+      <Outlet />
+      <Footer />
+    </>
   );
-}
+};
 
-export default App;
+const AppRouter = createBrowserRouter([
+  {
+    path: "/",
+    element: <AppLayout />,
+    // errorElement: <Error />,
+    children: [
+      {
+        path: "/cards",
+        element: <Cards />,
+      },
+      {
+        path: "/about",
+        element: <About />,
+      },
+      {
+        path: "/contact",
+        element: <Contact />,
+      },
+    ],
+  },
+]);
+
+export default AppRouter;
