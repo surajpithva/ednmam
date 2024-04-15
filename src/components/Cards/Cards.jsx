@@ -3,6 +3,7 @@ import { useState, useEffect } from "react";
 import FoodsCards from "../FoodsCards";
 import ModelFood from "../ModelFood";
 import Shimmer from "../Shimmer/Shimmer";
+import useOnline from "../useOnline";
 
 const Cards = () => {
   const API_ID = process.env.REACT_APP_FOOD_APP_ID;
@@ -18,13 +19,23 @@ const Cards = () => {
   }, []);
 
   const getCards = async () => {
-    const response = await fetch(
-      `${API_URL}/api/food-database/v2/parser?app_id=${API_ID}&app_key=${API_KEY}`
-    );
-    const data = await response.json();
-    setFilteredFoodCards(data.hints);
+    try {
+      const response = await fetch(
+        `${API_URL}/api/food-database/v2/parser?app_id=${API_ID}&app_key=${API_KEY}`
+      );
+      const data = await response?.json();
+      setFilteredFoodCards(data.hints);
+    } catch (error) {
+      console.log(error);
+    }
   };
-  if (!filteredFoodCards) return null;
+
+  // Offline or Online
+
+  // const isOnline = useOnline();
+  // console.log(isOnline, "isonline");
+  // if (!isOnline) <h1>🔴 Offline , Please Check your internet connection </h1>;
+
   return filteredFoodCards?.length === 0 ? (
     <Shimmer />
   ) : (

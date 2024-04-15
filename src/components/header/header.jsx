@@ -38,6 +38,11 @@ export const Header = () => {
                 Contact Us
               </Link>
             </li>
+            <li className="nav-item">
+              <Link to="/mart" className="nav-link">
+                Mart
+              </Link>
+            </li>
           </ul>
         </div>
         <a className="navbar-brand" href="#">
