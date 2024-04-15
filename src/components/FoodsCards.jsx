@@ -15,8 +15,8 @@ const FoodsCards = ({
 
   const handleMeasure = (data) => {
     console.log(data, "in handle measeurs");
-    const mydata = data?.map((item) => item);
-    setMeasuresData(mydata);
+    const myData = data?.map((item) => item);
+    setMeasuresData(myData);
     handleModalToggle();
   };
 
@@ -34,19 +34,26 @@ const FoodsCards = ({
             src={image ? image : images.question}
             alt="Card image cap"
           />
-          <div className="card-body">
-            <h5 className="card-title">
-              {label}-({category})
-            </h5>
+          <div
+            className="card-body"
+            // style={{ height: "200px", overflow: "scroll" }}
+          >
+            <h5 className="card-title">{label}</h5>
             <p className="card-text">{categoryLabel}</p>
             <p className="card-text">{knownAs}</p>
-
-            <a href="#" className="btn btn-primary">
-              More Details
-            </a>
-            <button onClick={() => handleMeasure(measures)}>
-              View Measures
-            </button>
+            <div className="d-flex justify-content-between">
+              <a href="#" className="btn btn-primary">
+                More Details
+              </a>
+              <button
+                type="button"
+                class="btn btn-success"
+                onClick={() => handleMeasure(measures)}
+              >
+                {" "}
+                View Measures
+              </button>
+            </div>
           </div>
         </div>
       </div>

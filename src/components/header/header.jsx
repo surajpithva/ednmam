@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 
 export const Header = () => {
   return (
-    <nav className="navbar navbar-expand-lg navbar-light bg-light">
+    <nav className="navbar navbar-expand-lg navbar-light bg-light sticky-top">
       <div className="container-fluid">
         <a className="navbar-brand" href="#">
           <img src={images.logo} alt="" className="logo" />
@@ -24,9 +24,9 @@ export const Header = () => {
         <div className="collapse navbar-collapse" id="navbarNavDropdown">
           <ul className="navbar-nav">
             <li className="nav-item">
-              <a className="nav-link active" aria-current="page" href="#">
+              <Link to="/cards" className="nav-link active" aria-current="page">
                 Home
-              </a>
+              </Link>
             </li>
             <li className="nav-item">
               <Link to="/about" className="nav-link">
@@ -40,6 +40,9 @@ export const Header = () => {
             </li>
           </ul>
         </div>
+        <a className="navbar-brand" href="#">
+          <img src={images.Profile} alt="" className="ProfileImg" />
+        </a>
       </div>
     </nav>
   );

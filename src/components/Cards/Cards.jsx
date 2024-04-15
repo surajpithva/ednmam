@@ -2,6 +2,7 @@ import React from "react";
 import { useState, useEffect } from "react";
 import FoodsCards from "../FoodsCards";
 import ModelFood from "../ModelFood";
+import Shimmer from "../Shimmer/Shimmer";
 
 const Cards = () => {
   const API_ID = process.env.REACT_APP_FOOD_APP_ID;
@@ -23,7 +24,10 @@ const Cards = () => {
     const data = await response.json();
     setFilteredFoodCards(data.hints);
   };
-  return (
+  if (!filteredFoodCards) return null;
+  return filteredFoodCards?.length === 0 ? (
+    <Shimmer />
+  ) : (
     <>
       <div className="container">
         <div className="row">
