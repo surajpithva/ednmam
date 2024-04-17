@@ -1,9 +1,13 @@
-import React from "react";
+import React, { useContext } from "react";
 import images from "../../image";
 import "./header.css";
 import { Link } from "react-router-dom";
+import { UseContext } from "react";
+import UserContext from "../../pages/UserContext";
 
 export const Header = () => {
+  const { user } = useContext(UserContext);
+
   return (
     <nav className="navbar navbar-expand-lg navbar-light bg-light sticky-top">
       <div className="container-fluid">
@@ -46,6 +50,7 @@ export const Header = () => {
           </ul>
         </div>
         <a className="navbar-brand" href="#">
+          <h5>{user.name}</h5>
           <img src={images.Profile} alt="" className="ProfileImg" />
         </a>
       </div>
