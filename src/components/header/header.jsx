@@ -4,8 +4,11 @@ import "./header.css";
 import { Link } from "react-router-dom";
 import { UseContext } from "react";
 import UserContext from "../../pages/UserContext";
+import { useSelector } from "react-redux";
 
 export const Header = () => {
+  const cartItems = useSelector((state) => state.cart.items);
+  console.log(cartItems);
   const { user } = useContext(UserContext);
 
   return (
@@ -47,10 +50,15 @@ export const Header = () => {
                 Mart
               </Link>
             </li>
+            <li className="nav-item">
+              <Link to="/cart" className="nav-link">
+                cart-{cartItems.length}
+              </Link>
+            </li>
           </ul>
         </div>
         <a className="navbar-brand" href="#">
-          <h5>{user.name}</h5>
+          <span>{user.name}</span>
           <img src={images.Profile} alt="" className="ProfileImg" />
         </a>
       </div>

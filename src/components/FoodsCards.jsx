@@ -1,6 +1,9 @@
 import { useState } from "react";
 import ModelFood from "./ModelFood";
 import images from "../image";
+import { addItem } from "../utils/CartSlice";
+import { useDispatch } from "react-redux";
+
 const FoodsCards = ({
   id,
   label,
@@ -23,8 +26,11 @@ const FoodsCards = ({
   function handleModalToggle() {
     setmodal(!modal);
   }
+  const dispatch = useDispatch();
+  const addFoodItem = () => {
+    dispatch(addItem("Grapes"));
+  };
 
-  console.log(modal);
   return (
     <>
       <div className="col-md-4 col-lg-3 col-sm-2 my-3">
@@ -42,12 +48,12 @@ const FoodsCards = ({
             <p className="card-text">{categoryLabel}</p>
             <p className="card-text">{knownAs}</p>
             <div className="d-flex justify-content-between">
-              <a href="#" className="btn btn-primary">
-                More Details
-              </a>
+              <button className="btn btn-primary" onClick={() => addFoodItem()}>
+                Add Item
+              </button>
               <button
                 type="button"
-                class="btn btn-success"
+                className="btn btn-success"
                 onClick={() => handleMeasure(measures)}
               >
                 {" "}

@@ -33,7 +33,7 @@ const Cards = () => {
   // Offline or Online
 
   // const isOnline = useOnline();
-  // console.log(isOnline, "isonline");
+  // console.log(isOnline, "isOnline");
   // if (!isOnline) <h1>🔴 Offline , Please Check your internet connection </h1>;
 
   return filteredFoodCards?.length === 0 ? (
@@ -43,7 +43,7 @@ const Cards = () => {
       <div className="container">
         <div className="row">
           {filteredFoodCards.map((foods) => {
-            // console.log(foods.measures);
+            console.log(foods.measures);
             return (
               <FoodsCards
                 label={foods.food.label}
