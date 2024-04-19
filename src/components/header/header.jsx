@@ -56,11 +56,11 @@ export const Header = () => {
               </Link>
             </li>
           </ul>
+          <span className="userName">{user.name}</span>
+          <a className="navbar-brand " href="#">
+            <img src={images.Profile} alt="" className="ProfileImg " />
+          </a>
         </div>
-        <a className="navbar-brand" href="#">
-          <span>{user.name}</span>
-          <img src={images.Profile} alt="" className="ProfileImg" />
-        </a>
       </div>
     </nav>
   );

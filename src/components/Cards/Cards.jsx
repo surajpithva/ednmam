@@ -1,17 +1,12 @@
 import React from "react";
 import { useState, useEffect } from "react";
 import FoodsCards from "../FoodsCards";
-import ModelFood from "../ModelFood";
 import Shimmer from "../Shimmer/Shimmer";
-import useOnline from "../useOnline";
 
 const Cards = () => {
   const API_ID = process.env.REACT_APP_FOOD_APP_ID;
   const API_KEY = process.env.REACT_APP_FOOD_APP_KEY;
   const API_URL = process.env.REACT_APP_BASE_URL_API;
-  //   console.log(API_ID);
-  //   console.log(API_KEY);
-  //   console.log(API_URL);
 
   const [filteredFoodCards, setFilteredFoodCards] = useState([]);
   useEffect(() => {
@@ -43,7 +38,7 @@ const Cards = () => {
       <div className="container">
         <div className="row">
           {filteredFoodCards.map((foods) => {
-            console.log(foods.measures);
+            // console.log(foods.food, "food");
             return (
               <FoodsCards
                 label={foods.food.label}

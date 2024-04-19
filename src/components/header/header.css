@@ -4,10 +4,11 @@
 }
 
 .ProfileImg {
-    height: 40px;
-    width: auto;
+    height: 30px;
+    width: 30px;
+
 }
 
-.navbar-brand {
-    margin-left: 3px;
+.userName {
+    margin-right: 5px;
 }
